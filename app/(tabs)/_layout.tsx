@@ -1,34 +1,48 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { View, Text } from "react-native";
+import React from "react";
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TAbLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: "Home",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="home" size={24} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="fav"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: "Favorite",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="heart" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="inbox"
+        options={{
+          title: "Inbox",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="chatbubble" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="people-circle" size={24} color={color} />
           ),
         }}
       />
